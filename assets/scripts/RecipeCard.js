@@ -171,7 +171,7 @@ class RecipeCard extends HTMLElement {
     rating.textContent = data.rating;
 
     let star = this.shadowRoot.querySelectorAll('img')[1];
-    star.src = `/assets/images/icons/${data.rating}-star.svg`;
+    star.src = `./assets/images/icons/${data.rating}-star.svg`;
     star.alt = `${data.rating} stars`;
 
     let num_rating = this.shadowRoot.querySelectorAll('span')[1];
