@@ -139,50 +139,22 @@ class RecipeCard extends HTMLElement {
     //           literals (tempalte strings) and element.innerHTML for this.
 
     art.innerHTML = `
-    <img src="https://link-to-article.com/recipe-thumbnail.jpg"
-    alt="Recipe Title">
+    <img src=${data['imgSrc']}
+    alt=${data['imgAlt']}>
     <p class="title">
-    <a href="https://link-to-article.com">Title</a>
+    <a href=${data['titleLnk']}>${data['titleTxt']}</a>
   </p>
-  <p class="organization">The Chef's Organization</p>
+  <p class="organization">${data['organization']}</p>
   <div class="rating">
-    <span>5</span>
-    <img src="/assets/images/icons/5-star.svg" alt="5 stars">
-    <span>(500)</span>
+    <span>${data['rating']}</span>
+    <img src="./assets/images/icons/${data['rating']}-star.svg" alt="${data['rating']} stars">
+    <span>(${data['numRatings']})</span>
   </div>
-  <time>50 min</time>
+  <time>${data['lengthTime']}</time>
   <p class="ingredients">
-    Comma, Separated, List, of, Ingredients
+    ${data['ingredients']}
   </p>
     `;
-    
-    let img = this.shadowRoot.querySelector('img');
-    img.src = data.imgSrc;
-    img.alt = data.imgAlt;
-
-    let link = this.shadowRoot.querySelector('a');
-    link.href = data.titleLnk;
-    link.textContent = data.titleTxt;
-
-    let p_org = this.shadowRoot.querySelector('.organization');
-    p_org.textContent = data.organization;
-
-    let rating = this.shadowRoot.querySelector('span');
-    rating.textContent = data.rating;
-
-    let star = this.shadowRoot.querySelectorAll('img')[1];
-    star.src = `./assets/images/icons/${data.rating}-star.svg`;
-    star.alt = `${data.rating} stars`;
-
-    let num_rating = this.shadowRoot.querySelectorAll('span')[1];
-    num_rating.textContent = `(${data.numRatings})`;
-
-
-    let time = this.shadowRoot.querySelector('time');
-    time.textContent = data.lengthTime;
-
-    let ingredients = this.shadowRoot.querySelector('.ingredients');
-    ingredients.textContent = data.ingredients;
   }
 }
 
